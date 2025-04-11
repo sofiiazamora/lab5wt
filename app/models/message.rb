@@ -1,2 +1,3 @@
 class Message < ApplicationRecord
-end
+    validates :chat_id, :user_id, :body, presence: true
+  end

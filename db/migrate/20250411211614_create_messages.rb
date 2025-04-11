@@ -7,5 +7,8 @@ class CreateMessages < ActiveRecord::Migration[8.0]
 
       t.timestamps null: false
     end
+    
+    add_index :messages, :chat_id
+    add_index :messages, :user_id
   end
 end

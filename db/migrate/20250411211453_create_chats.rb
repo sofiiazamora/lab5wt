@@ -6,5 +6,8 @@ class CreateChats < ActiveRecord::Migration[8.0]
 
       t.timestamps null: false
     end
+    
+    add_index :chats, :sender_id
+    add_index :chats, :receiver_id
   end
 end
