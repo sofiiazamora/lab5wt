@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :users, only: [:index, :show]
+  resources :chats, only: [:index, :show]
+  resources :messages, only: [:index, :show]
+
+  root "users#index"
+
+  get "messages/index"
+  get "messages/show"
+  get "chats/index"
+  get "chats/show"
+  get "users/index"
+  get "users/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

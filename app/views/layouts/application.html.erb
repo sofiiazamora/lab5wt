@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,6 +25,12 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%= render "shared/navbar" %>
+  <%= yield %>
+  <div class="alert alert-primary" role="alert">
+  ¡Bootstrap está funcionando correctamente!
+  </div>
+
   </body>
+
 </html>
