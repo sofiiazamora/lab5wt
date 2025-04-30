@@ -1,5 +1,4 @@
-<h1>Messages</h1>
-
+<h1>Message Details</h1>
 
 <p><strong>ID:</strong> <%= @message.id %></p>
 <p><strong>Chat ID:</strong> <%= @message.chat_id %></p>
@@ -7,4 +6,5 @@
 <p><strong>Content:</strong> <%= @message.body %></p>
 <p><strong>Created At:</strong> <%= @message.created_at %></p>
 
-<%= link_to 'Back to Messages', messages_path %>
+<%= link_to 'Back to Messages', messages_path, class: "btn btn-secondary me-2" %>
+<%= link_to 'Send New Message', new_message_path, class: "btn btn-primary" %>

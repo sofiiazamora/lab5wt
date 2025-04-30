@@ -1,3 +1,6 @@
 class Message < ApplicationRecord
-    validates :chat_id, :user_id, :body, presence: true
-  end
+  belongs_to :user
+  belongs_to :chat
+
+  validates :body, presence: true
+end

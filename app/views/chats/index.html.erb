@@ -1,11 +1,13 @@
 <h1>Chats</h1>
 
+<%= link_to "Start New Chat", new_chat_path, class: "btn btn-primary mb-3" %>
+
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
-      <th>Sender ID</th>
-      <th>Receiver ID</th>
+      <th>Sender</th>
+      <th>Receiver</th>
       <th>Created At</th>
       <th></th>
     </tr>
@@ -14,10 +16,10 @@
     <% @chats.each do |chat| %>
       <tr>
         <td><%= chat.id %></td>
-        <td><%= chat.sender_id %></td>
-        <td><%= chat.receiver_id %></td>
-        <td><%= chat.created_at %></td>
-        <td><%= link_to 'Show', chat_path(chat) %></td>
+        <td><%= "#{chat.sender.first_name} #{chat.sender.last_name}" %></td>
+        <td><%= "#{chat.receiver.first_name} #{chat.receiver.last_name}" %></td>
+        <td><%= chat.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to 'Show', chat_path(chat), class: "text-decoration-underline" %></td>
       </tr>
     <% end %>
   </tbody>

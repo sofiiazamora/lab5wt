@@ -16,14 +16,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_211614) do
     t.integer "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_chats_on_receiver_id"
+    t.index ["sender_id"], name: "index_chats_on_sender_id"
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "chat_id"
-    t.integer "user_id"
-    t.text "body"
+    t.integer "chat_id", null: false
+    t.integer "user_id", null: false
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,5 +36,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_211614) do
     t.string "last_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 end
