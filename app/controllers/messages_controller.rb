@@ -31,6 +31,24 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body, :chat_id, :user_id)
   end
+  
+  def edit
+    @message = Message.find(params[:id])
+    @chats = Chat.all
+    @users = User.all
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      redirect_to @message, notice: "Message updated successfully"
+    else
+      @chats = Chat.all
+      @users = User.all
+      render :edit
+    end
+  end
+
 end
 
 

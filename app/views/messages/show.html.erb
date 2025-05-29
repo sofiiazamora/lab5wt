@@ -7,4 +7,8 @@
 <p><strong>Created At:</strong> <%= @message.created_at %></p>
 
 <%= link_to 'Back to Messages', messages_path, class: "btn btn-secondary me-2" %>
-<%= link_to 'Send New Message', new_message_path, class: "btn btn-primary" %>
+<%= link_to 'Send New Message', new_message_path, class: "btn btn-primary me-2" %>
+<%= link_to 'Edit Message', edit_message_path(@message), class: "btn btn-warning" %>
+
+<p><strong>User:</strong> <%= @message.user.full_name %></p>
+<p><strong>Chat with:</strong> <%= @message.chat.sender.full_name %> and <%= @message.chat.receiver.full_name %></p>

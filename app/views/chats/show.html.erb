@@ -6,4 +6,16 @@
 <p><strong>Created At:</strong> <%= @chat.created_at %></p>
 
 <%= link_to 'Back to Chats', chats_path, class: "btn btn-secondary me-2" %>
-<%= link_to 'Start New Chat', new_chat_path, class: "btn btn-primary" %>
+<%= link_to 'Start New Chat', new_chat_path, class: "btn btn-primary me-2" %>
+<%= link_to 'Edit Chat', edit_chat_path(@chat), class: "btn btn-warning" %>
+
+<p><strong>Sender:</strong> <%= @chat.sender.full_name %></p>
+<p><strong>Receiver:</strong> <%= @chat.receiver.full_name %></p>
+
+<h3>Messages</h3>
+<ul>
+  <% @chat.messages.each do |message| %>
+    <li><%= message.user.full_name %>: <%= message.body %></li>
+  <% end %>
+</ul>
+

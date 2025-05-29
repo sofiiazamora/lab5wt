@@ -10,7 +10,7 @@
       <th>Chat ID</th>
       <th>Body</th>
       <th>Created At</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +22,10 @@
         <td><%= message.body %></td>
         <td><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to 'Show', message_path(message), class: "text-decoration-underline" %></td>
+        <td><%= link_to 'Edit', edit_message_path(message), class: "text-decoration-underline" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 

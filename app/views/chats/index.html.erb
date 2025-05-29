@@ -9,7 +9,7 @@
       <th>Sender</th>
       <th>Receiver</th>
       <th>Created At</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +20,7 @@
         <td><%= "#{chat.receiver.first_name} #{chat.receiver.last_name}" %></td>
         <td><%= chat.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to 'Show', chat_path(chat), class: "text-decoration-underline" %></td>
+        <td><%= link_to 'Edit', edit_chat_path(chat), class: "text-decoration-underline" %></td>
       </tr>
     <% end %>
   </tbody>
