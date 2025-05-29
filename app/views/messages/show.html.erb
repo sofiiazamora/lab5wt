@@ -1,14 +1,15 @@
-<h1>Message Details</h1>
+<h1>Message</h1>
 
-<p><strong>ID:</strong> <%= @message.id %></p>
-<p><strong>Chat ID:</strong> <%= @message.chat_id %></p>
-<p><strong>User ID:</strong> <%= @message.user_id %></p>
-<p><strong>Content:</strong> <%= @message.body %></p>
-<p><strong>Created At:</strong> <%= @message.created_at %></p>
+<p><strong>Body:</strong> <%= @message.body %></p>
+<p><strong>Chat:</strong> <%= @message.chat.id %></p>
+<p><strong>User:</strong> <%= @message.user.email %></p>
 
-<%= link_to 'Back to Messages', messages_path, class: "btn btn-secondary me-2" %>
-<%= link_to 'Send New Message', new_message_path, class: "btn btn-primary me-2" %>
-<%= link_to 'Edit Message', edit_message_path(@message), class: "btn btn-warning" %>
+<% if can? :edit, @message %>
+  <%= link_to "Edit", edit_message_path(@message), class: "btn btn-primary" %>
+<% end %>
 
-<p><strong>User:</strong> <%= @message.user.full_name %></p>
-<p><strong>Chat with:</strong> <%= @message.chat.sender.full_name %> and <%= @message.chat.receiver.full_name %></p>
+<% if can? :destroy, @message %>
+  <%= link_to "Delete", message_path(@message), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<% end %>
+
+<%= link_to "Back to Messages", messages_path, class: "btn btn-secondary" %>

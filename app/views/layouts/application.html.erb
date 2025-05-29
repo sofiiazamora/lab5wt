@@ -17,12 +17,19 @@
   <link rel="apple-touch-icon" href="/icon.png">
   </head>
 
-
   <body>
-  <%= render "shared/navbar" %>
-  <%= yield %>
-  </div>
+    <%= render "shared/navbar" %>
+    <%= yield %>
 
+    <% if notice %>
+      <div class="alert alert-info text-center"><%= notice %></div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger text-center"><%= alert %></div>
+    <% end %>
   </body>
+
+  
 
 </html>
