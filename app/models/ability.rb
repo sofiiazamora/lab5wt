@@ -10,6 +10,8 @@ class Ability
     # Permisos para Message (como tenías)
     can :create, Message
     can [:update, :destroy], Message, user_id: user.id
+    
+    can [:read, :create], Chat
 
     # Permisos para User
     # Por ejemplo, permitir crear y gestionar usuarios (ajusta según tu necesidad)

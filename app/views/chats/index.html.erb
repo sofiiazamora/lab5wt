@@ -1,8 +1,9 @@
 <h1>Chats</h1>
 
-<% if can? :new, Chat %>
+<% if can? :create, Chat %>
   <%= link_to "New Chat", new_chat_path, class: "btn btn-primary mb-3" %>
 <% end %>
+
 
 <table class="table">
   <thead>
