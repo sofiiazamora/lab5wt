@@ -8,6 +8,7 @@
 <%= link_to 'Back to Chats', chats_path, class: "btn btn-secondary me-2" %>
 <%= link_to 'Start New Chat', new_chat_path, class: "btn btn-primary me-2" %>
 <%= link_to 'Edit Chat', edit_chat_path(@chat), class: "btn btn-warning" %>
+<%= link_to "Delete", chat_path(@chat), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
 <p><strong>Sender:</strong> <%= @chat.sender.full_name %></p>
 <p><strong>Receiver:</strong> <%= @chat.receiver.full_name %></p>

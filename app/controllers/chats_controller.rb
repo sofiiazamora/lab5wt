@@ -3,11 +3,11 @@ class ChatsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    # @chats cargado y autorizado
+    @chats = Chat.accessible_by(current_ability)
   end
 
+
   def show
-    # @chat cargado y autorizado
   end
 
   def new

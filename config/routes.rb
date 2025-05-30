@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :messages
 
   # Página principal
-  root "users#index"
+  root "home#index"
+
 
   # Ruta de prueba de salud
   get "up" => "rails/health#show", as: :rails_health_check

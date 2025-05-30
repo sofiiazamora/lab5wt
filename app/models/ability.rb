@@ -4,17 +4,20 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    # Permite leer todo
     can :read, :all
 
-    # Permisos para Message (como tenías)
+    # Mensajes
     can :create, Message
     can [:update, :destroy], Message, user_id: user.id
-    
-    can [:read, :create], Chat
 
-    # Permisos para User
-    # Por ejemplo, permitir crear y gestionar usuarios (ajusta según tu necesidad)
+    # Chats
+    can :create, Chat
+
+    can [:read, :update, :destroy], Chat, sender_id: user.id
+    can [:read, :update, :destroy], Chat, receiver_id: user.id
+
+
+    # Usuarios
     can :create, User
     can [:read, :update, :destroy], User, id: user.id
   end

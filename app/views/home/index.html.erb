@@ -1,0 +1,10 @@
+<div class="container text-center mt-5">
+  <h1 class="mb-4">Welcome to WhatsNew</h1>
+
+  <% unless user_signed_in? %>
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-secondary btn-lg" %>
+    </div>
+  <% end %>
+</div>
