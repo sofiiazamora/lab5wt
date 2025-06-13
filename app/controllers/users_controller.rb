@@ -3,8 +3,14 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    # @users cargado y autorizado
+    authorize! :read, User
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to chats_path, alert: "Access denied."
+    end
   end
+
 
   def show
     # @user cargado y autorizado

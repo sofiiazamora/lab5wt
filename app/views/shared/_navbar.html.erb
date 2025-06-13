@@ -11,9 +11,11 @@
         <li class="nav-item">
           <%= link_to "Users", users_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Chats", chats_path, class: "nav-link" %>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "My Inbox", chats_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "Messages", messages_path, class: "nav-link" %>
         </li>
@@ -31,7 +33,6 @@
           </li>
           <li class="nav-item">
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-link", form: { class: "d-inline" } %>
-
           </li>
         <% else %>
           <li class="nav-item">

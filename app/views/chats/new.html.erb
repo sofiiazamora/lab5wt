@@ -1,26 +1,14 @@
-<h1>New Chat</h1>
+<h1>Start a New Chat</h1>
 
-<%= form_with model: @chat do |form| %>
-  <% if @chat.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h4>
-      <ul>
-        <% @chat.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="mb-3">
-    <%= form.label :sender_id, "Sender" %>
-    <%= form.select :sender_id, options_from_collection_for_select(@users, :id, :email), prompt: "Select sender", class: "form-control" %>
+<%= form_for(@chat) do |f| %>
+  <div class="form-group mb-3">
+    <%= f.label :receiver_id, "Choose a user to chat with" %><br>
+    <%= f.collection_select :receiver_id, @users, :id, :full_name, prompt: "Select a user", class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :receiver_id, "Receiver" %>
-    <%= form.select :receiver_id, options_from_collection_for_select(@users, :id, :email), prompt: "Select receiver", class: "form-control" %>
-  </div>
+  <%= f.hidden_field :sender_id, value: current_user.id %>
 
-  <%= form.submit "Create Chat", class: "btn btn-primary" %>
+  <div class="form-group">
+    <%= f.submit "Start Chat", class: "btn btn-primary" %>
+  </div>
 <% end %>
